@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	//"log"
+	"github.com/go-sql-driver/mysql"
 	_ "github.com/denisenkom/go-mssqldb"
 	"golang.org/x/crypto/bcrypt"
 )
