@@ -8,14 +8,14 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 	"golang.org/x/crypto/bcrypt"
 )
-var (
-    server   = "DESKTOP-5SHM15R\\SQLEXPRESS"
-    database = "Fullstack"
-)
+// var (
+//     server   = "DESKTOP-5SHM15R\\SQLEXPRESS"
+//     database = "Fullstack"
+// )
 func Connect() (*sql.DB, error) {
-    connString := fmt.Sprintf("server=%s;database=%s;integrated security=true;encrypt=disable",
-        server, database)
-
+    // connString := fmt.Sprintf("server=%s;database=%s;integrated security=true;encrypt=disable",
+    //     server, database)
+	connString := os.Getenv("postgresql://postgres:vlBHTbpcPSFNZeMBgrrUVppAPKVkILSR@postgres.railway.internal:5432/railway")
     db, err := sql.Open("sqlserver", connString)
     if err != nil {
         return nil, fmt.Errorf("error creating connection pool: %v", err)
