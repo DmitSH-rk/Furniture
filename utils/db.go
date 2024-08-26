@@ -32,7 +32,7 @@ func Connect() (*sql.DB, error) {
 }
 
 func InserUser(db *sql.DB, Name string, Password string) error {
-	query := "INSERT INTO dbo.[User] (Name, Password) VALUES(@p1, @p2)"
+	query := "INSERT INTO dbo.Userr (Name, Password) VALUES(@p1, @p2)"
 	_, err := db.Exec(query, sql.Named("p1", Name), sql.Named("p2", Password))
 	return err
 }
@@ -46,7 +46,7 @@ func CheckPasswordHash(password, hash string) bool {
 }
 func CheckUser(db *sql.DB, Name string) (string, error){
 	var hashed string
-	query := "SELECT Password FROM dbo.[User] WHERE Name = @name "
+	query := "SELECT Password FROM dbo.Userr WHERE Name = @name "
 	err := db.QueryRow(query, sql.Named("name", Name)).Scan(&hashed)
     return hashed, err
 }
