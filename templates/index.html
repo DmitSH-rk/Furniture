@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <script src="static/js/script.js"></script>
+  </head>
+  <body>
+    <div class="all">
+      <div class="nav">
+        <div class="nav__logo">FurnTur</div>
+        <div class="nav__prof">
+          {{if .Autho}}
+          <a href="/profile" class="autho">Profile</a>
+          {{else}}
+          <a href="#authomodal" class="autho">Authorization</a>
+          {{end}}
+          <a href="#regmodal" class="reg">Registration</a>
+        </div>
+      </div>
+      {{if .Btnclicked}}
+      <div class="small" id="smalldel">
+        <img src="{{.PuSmall}}" alt="" class="smallimg" />
+        <div class="smallbio">{{.BSmall}}</div>
+        <div class="smallprice">{{.PrSmall}}</div>
+      </div>
+      {{end}}
+      <div class="main">
+        <div class="objs">
+          {{range $index, $urls := .Pursl}}
+          <div class="obj">
+            <img src="{{$urls}}" alt="huesos" class="img"/ >
+            <div class="bio">{{index $.BioH $index}}</div>
+            <div class="priceandbtn">
+              <div class="price">{{index $.PrecH $index}}</div>
+              <form action="/buy" method="post" class="btn__post">
+                <input type="hidden" name="Url" class="imageUrl" />
+                <button class="btn" type="submit">Buy</button>
+              </form>
+            </div>
+          </div>
+          {{end}}
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const productImages = document.querySelectorAll(".img");
+            const imageUrls = document.querySelectorAll(".imageUrl");
+            productImages.forEach((img, index) => {
+              imageUrls[index].value = img.src;
+            });
+          });
+          const element = document.getElementById("smalldel");
+          setTimeout(() => {
+            if (element) {
+              element.remove();
+            }
+          }, 5000);
+        </script>
+      </div>
+    </div>
+    <div class="modalbck" id="authomodal">
+      <form action="/verify" method="post" class="modalwin">
+        <input type="text" name="Name" id="Name" placeholder="Enter name" />
+        <input
+          type="password"
+          name="Password"
+          id="Password"
+          placeholder="Enter password"
+        />
+        <button type="submit" class="saveButton">Autho</button>
+      </form>
+    </div>
+    <div class="modalbck" id="regmodal">
+      <form action="/save" method="post" class="modalwin">
+        <input type="text" name="Name" id="Name" placeholder="Enter name" />
+        <input
+          type="password"
+          name="Password"
+          id="Password"
+          placeholder="Enter password"
+        />
+        <button type="submit" class="saveButton">Reg</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/prifile.css" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="leftbar">
+        <div
+          class="top"
+          style="
+            background-image: url(https://avatars.mds.yandex.net/i?id=e56309bb7ef64e2a9b4be61f9068ff46a70fbdbb-12384307-images-thumbs&n=13);
+          "
+        >
+          <div class="name">{{.UName}}</div>
+        </div>
+        <div class="bottom">
+          <div class="btn"><a href="/">main</a></div>
+          <div class="btn"><a href="/">main</a></div>
+          <div class="btn"><a href="/">main</a></div>
+        </div>
+      </div>
+      <div class="leftshd"></div>
+      <div class="all">
+        <div class="objs">
+          {{range $index, $name := .ImgUrl}}
+          <div class="obj">
+            <img src="{{$name}}" alt="" class="img" />
+            <div class="bio">{{index $.Bio $index}}</div>
+            <div class="price">{{index $.Price $index}}</div>
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
