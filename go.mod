@@ -1,6 +1,6 @@
 module furniture
 
-go 1.22.5
+go 1.20.0
 
 require (
 	github.com/go-sql-driver/mysql
