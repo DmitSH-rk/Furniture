@@ -1,4 +1,4 @@
-module furniture
+module github.com/dmitsh-rk/furniture
 
 go 1.23
 
