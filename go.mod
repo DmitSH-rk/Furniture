@@ -1,9 +1,8 @@
-module github.com/dmitsh-rk/furniture
+module furniture
 
 go 1.23
 
 require (
-	github.com/furniture/module v1.2.3
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/denisenkom/go-mssqldb v0.12.3 
 	github.com/golang-sql/civil v0.0.0-20190719163853-cb61b32ac6fe // indirect
